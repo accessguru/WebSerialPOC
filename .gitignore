@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/WebSerialPOC/CopilotIndices/0.2.1653.9816
+/.vs/WebSerialPOC/v17
+/.vs
+/WebSerialPOC/.vs/WebSerialPOC
+/WebSerialPOC/WebSerialPOC/bin/Debug/net8.0
+/WebSerialPOC/WebSerialPOC/obj
