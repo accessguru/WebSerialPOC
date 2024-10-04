@@ -8,7 +8,7 @@
 </div>
 
 <button @onclick="OpenPort" type="button" class="btn btn-primary m-3">Open Port</button>
-<button @onclick="SendData" class="btn btn-success m-3">Send Data</button>
+<button @onclick="SendData" class="btn btn-success m-3">Open Cash Drawer</button>
 <button @onclick="ClosePort" class="btn btn-danger m-3">Close Port</button>
 
 <div class="m-3">
@@ -33,7 +33,7 @@
 
     private async Task SendData()
     {
-        var data = await JsRuntime.InvokeAsync<string>("serialPortManager.sendData", "Hello, Serial Port!");
+        var data = await JsRuntime.InvokeAsync<string>("serialPortManager.openCashDrawer");
         ReceivedData.Insert(0, data);
     }
 

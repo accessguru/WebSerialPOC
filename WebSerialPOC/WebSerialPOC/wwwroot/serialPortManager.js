@@ -20,6 +20,11 @@
         }
     }
 
+    async openCashDrawer() {
+        const data = new TextEncoder().encode("OPEN");
+        return await this.sendData(data);
+    }
+
     async sendData(data) {
         if (this.writer) {
             try {
