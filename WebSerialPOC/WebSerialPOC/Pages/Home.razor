@@ -1,0 +1,46 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<div class="m-3">
+    <a href="/test">Test</a>
+    <br />
+</div>
+
+<button @onclick="OpenPort" type="button" class="btn btn-primary m-3">Open Port</button>
+<button @onclick="SendData" class="btn btn-success m-3">Send Data</button>
+<button @onclick="ClosePort" class="btn btn-danger m-3">Close Port</button>
+
+<div class="m-3">
+    @foreach (var data in ReceivedData)
+    {
+        @data
+        <br />
+    }
+</div>
+
+@code {
+    [Inject] 
+    private IJSRuntime JsRuntime { get; set; } = default!;
+
+    private List<string> ReceivedData = new();
+
+    private async Task OpenPort()
+    {
+        var data = await JsRuntime.InvokeAsync<string>("serialPortManager.openPort");
+        ReceivedData.Insert(0, data);
+    }
+
+    private async Task SendData()
+    {
+        var data = await JsRuntime.InvokeAsync<string>("serialPortManager.sendData", "Hello, Serial Port!");
+        ReceivedData.Insert(0, data);
+    }
+
+    private async Task ClosePort()
+    {
+        var data = await JsRuntime.InvokeAsync<string>("serialPortManager.closePort");
+        ReceivedData.Insert(0, data);
+    }
+
+}
